@@ -1,0 +1,10 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  background-color: #212529;
+  /* background-color: coral; */
+  /* font-size: 100%; */
+}
