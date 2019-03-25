@@ -25,9 +25,9 @@ function App() {
         <div className="mt-3 w-100">
           <OneRM />
         </div>
-        <div className="mt-3 w-100">
+        {/* <div className="mt-3 w-100">
           <LiftModifiers />
-        </div>
+        </div> */}
 
         <div className="mt-3 w-100 mb-2">
           <Button

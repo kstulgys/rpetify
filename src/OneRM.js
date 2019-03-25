@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { Button, Modal, ModalBody, ModalHeader, FormSelect } from "shards-react"
-import store from "./store"
 import LiftOneRMRow from "./LiftOneRMRow"
+import LiftModifierRow from "./LiftModifierRow"
+import store from "./store"
 
 export default function OneRM() {
   const { state, setState } = store.useStore()
-  const [open, toggle] = useState(true)
+  const [open, toggle] = useState(false)
+  const doNotRenderLifts = ["SQ", "BP", "MP", "DL"]
 
   return (
     <div className="w-100">
@@ -17,7 +19,9 @@ export default function OneRM() {
         1 Rep Max
       </Button>
       <Modal className="" open={open} toggle={() => toggle(!open)}>
-        <ModalBody className="p-1">
+        <ModalBody
+          className="p-1"
+          style={{ height: "75vh", overflowY: "auto" }}>
           <div className="d-flex align-items-center justify-content-between p-3">
             <h5 className="m-0">1 Rep Max (lbs)</h5>
             <h5 className="m-0" onClick={() => toggle(!open)}>
@@ -59,6 +63,41 @@ export default function OneRM() {
                       />
                     </tr>
                   )
+                }
+              )}
+            </tbody>
+          </table>
+
+          <table className="table text-center">
+            <thead className="thead-dark text-center">
+              <tr className="">
+                <th className="" scope="col">
+                  Lift
+                </th>
+                <th className="" scope="col">
+                  Percent
+                </th>
+                <th className="" scope="col">
+                  of 1eRM ref
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {state.modifiers.map(
+                ({ id, rootShortName, shortName, modifier }) => {
+                  if (!doNotRenderLifts.includes(shortName)) {
+                    return (
+                      <tr key={id} className="text-center">
+                        <LiftModifierRow
+                          id={id}
+                          rootShortName={rootShortName}
+                          shortName={shortName}
+                          modifier={modifier}
+                        />
+                      </tr>
+                    )
+                  }
+                  return null
                 }
               )}
             </tbody>

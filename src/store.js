@@ -42,53 +42,115 @@ const initialState = {
   ],
 
   modifiers: [
-    { id: 0, rootShortName: "SQ", shortName: "SQ", modifier: 1 },
-    { id: 1, rootShortName: "MP", shortName: "MP", modifier: 1 },
-    { id: 2, rootShortName: "DL", shortName: "DL", modifier: 1 },
-    { id: 3, rootShortName: "BP", shortName: "BP", modifier: 1 },
-    { id: 4, rootShortName: "BP", shortName: "BP1s", modifier: 0.9 },
+    { id: 0, name: "Squat", rootShortName: "SQ", shortName: "SQ", modifier: 1 },
+    {
+      id: 1,
+      name: "M-Press",
+      rootShortName: "MP",
+      shortName: "MP",
+      modifier: 1
+    },
+    {
+      id: 2,
+      name: "Deadlift",
+      rootShortName: "DL",
+      shortName: "DL",
+      modifier: 1
+    },
+    {
+      id: 3,
+      name: "B-Press",
+      rootShortName: "BP",
+      shortName: "BP",
+      modifier: 1
+    },
+    {
+      id: 4,
+      name: "B-Press-1sc",
+      rootShortName: "BP",
+      shortName: "BP1s",
+      modifier: 0.9
+    },
     {
       id: 5,
+      name: "B-Press-Close-Grip",
       rootShortName: "BP",
       shortName: "BPcg",
       modifier: 0.9
     },
     {
       id: 6,
+      name: "B-Press-Close-Grip-Incline",
       rootShortName: "BP",
       shortName: "BPcgInc",
       modifier: 0.8
     },
     {
       id: 7,
+      name: "B-Press-Incline-2sc",
       rootShortName: "BP",
       shortName: "BPInc2s",
       modifier: 0.8
     },
-    { id: 8, rootShortName: "DL", shortName: "RDL", modifier: 0.8 },
-    { id: 9, rootShortName: "DL", shortName: "PR", modifier: 0.7 },
-    { id: 10, rootShortName: "DL", shortName: "SLDL", modifier: 0.8 },
-    { id: 11, rootShortName: "DL", shortName: "PR-myo", modifier: 0.45 },
+    {
+      id: 8,
+      name: "Romanian-Deadlift",
+      rootShortName: "DL",
+      shortName: "RDL",
+      modifier: 0.8
+    },
+    {
+      id: 9,
+      name: "Pendlay-Row",
+      rootShortName: "DL",
+      shortName: "PR",
+      modifier: 0.7
+    },
+    {
+      id: 10,
+      name: "Stiff-Leg-Deadlift",
+      rootShortName: "DL",
+      shortName: "SLDL",
+      modifier: 0.8
+    },
+    {
+      id: 11,
+      name: "Weighted-ChinUps",
+      rootShortName: "DL",
+      shortName: "W-Chins",
+      modifier: 0.6
+    },
     {
       id: 12,
+      name: "Pendlay-Row-Myo-Reps",
+      rootShortName: "DL",
+      shortName: "PR-myo",
+      modifier: 0.45
+    },
+    {
+      id: 13,
+      name: "M-Press-Myo-Reps",
       rootShortName: "MP",
       shortName: "MP-myo",
       modifier: 0.45
     },
     {
-      id: 13,
+      id: 14,
+      name: "Dumbbells-Flat-Bench-Myo-Reps",
       rootShortName: "BP",
       shortName: "DBfb-myo",
       modifier: 0.325
     },
     {
-      id: 14,
+      id: 15,
+      name: "B-Press-Close-Grip-Myo-Reps",
       rootShortName: "BP",
       shortName: "BPcg-myo",
       modifier: 0.4
     },
     {
-      id: 15,
+      id: 16,
+      name: "Leg-Press-Myo-Reps",
       rootShortName: "SQ",
       shortName: "LP-myo",
       modifier: 1

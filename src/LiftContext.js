@@ -16,10 +16,10 @@ export default function LiftContext({ lift }) {
         className="w-100 mb-3"
         onChange={e => onNameChange(e.target.value)}>
         >
-        {state.modifiers.map(({ id, shortName }) => {
+        {state.modifiers.map(({ id, shortName, name }) => {
           return (
             <option key={id} value={shortName}>
-              {shortName}
+              {name}
             </option>
           )
         })}
