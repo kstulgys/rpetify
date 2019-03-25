@@ -21,15 +21,14 @@ function App() {
         {state.currentLifts.map((lift, i) => {
           return <LiftContext lift={lift} key={i} />
         })}
+        <br />
+        <br />
         <AddLift />
-        <div className="mt-3 w-100">
+        <div className="my-3">
           <OneRM />
         </div>
-        {/* <div className="mt-3 w-100">
-          <LiftModifiers />
-        </div> */}
 
-        <div className="mt-3 w-100 mb-2">
+        {/* <div className="mt-3 w-100 mb-2">
           <Button
             size="lg"
             outline
@@ -45,8 +44,8 @@ function App() {
               }
             }}>
             Reset Program
-          </Button>
-        </div>
+          </Button> */}
+        {/* </div> */}
       </div>
     </div>
   )
