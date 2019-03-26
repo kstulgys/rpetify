@@ -28,7 +28,7 @@ function App() {
           <OneRM />
         </div>
 
-        {/* <div className="mt-3 w-100 mb-2">
+        <div className="mt-3 w-100 mb-2">
           <Button
             size="lg"
             outline
@@ -36,16 +36,16 @@ function App() {
             className="w-100"
             onClick={() => {
               const r = window.confirm(
-                "Do you really want to reset the Program? All saved data (1eRM etc.) will be lost!"
+                "Do you really want to reset the application? All saved data (1eRM etc.) will be lost!"
               )
               if (r === true) {
                 localStorage.clear()
                 window.location.reload()
               }
             }}>
-            Reset Program
-          </Button> */}
-        {/* </div> */}
+            Application Reset
+          </Button>
+        </div>
       </div>
     </div>
   )
