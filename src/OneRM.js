@@ -6,7 +6,7 @@ import store from "./store"
 
 export default function OneRM() {
   const { state, setState } = store.useStore()
-  const [open, toggle] = useState(true)
+  const [open, toggle] = useState(false)
   const doNotRenderLifts = ["SQ", "BP", "MP", "DL"]
 
   return (
