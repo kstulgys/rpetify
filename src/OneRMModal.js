@@ -4,7 +4,7 @@ import LiftOneRMRow from "./LiftOneRMRow"
 import LiftModifierRow from "./LiftModifierRow"
 import store from "./store"
 
-export default function OneRM() {
+export default function OneRMModal() {
   const { state, setState } = store.useStore()
   const [open, toggle] = useState(false)
   const doNotRenderLifts = ["SQ", "BP", "MP", "DL"]

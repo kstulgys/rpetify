@@ -4,7 +4,7 @@ import "./styles.css"
 import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 import { Button } from "shards-react"
-import OneRM from "./OneRM"
+import OneRMModal from "./OneRMModal"
 import LiftContext from "./LiftContext"
 import AddLift from "./AddLift"
 import store from "./store"
@@ -24,7 +24,7 @@ function App() {
         <br />
         <AddLift />
         <div className="my-3">
-          <OneRM />
+          <OneRMModal />
         </div>
 
         <div className="mt-3 w-100 mb-2">

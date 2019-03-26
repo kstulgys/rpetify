@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Button, FormSelect } from "shards-react"
 
 import store from "./store"
-import LiftRow from "./LiftRow"
+import LiftSetRow from "./LiftSetRow"
 import PlatesModal from "./PlatesModal"
 
 export default function LiftContext({ lift }) {
@@ -40,7 +40,7 @@ export default function LiftContext({ lift }) {
       </div>
       {lift.sets.map(set => {
         return (
-          <LiftRow
+          <LiftSetRow
             key={set.no}
             liftNo={lift.no}
             shortName={lift.shortName}
@@ -62,7 +62,7 @@ export default function LiftContext({ lift }) {
         {!lift.shortName.includes("myo") && (
           <>
             <PlatesModal
-              modalName="Warm-Up Plates"
+              modalName="Warm-Up Sets"
               sets={lift.sets}
               shortName={lift.shortName}
               rootShortName={lift.rootShortName}
@@ -71,7 +71,7 @@ export default function LiftContext({ lift }) {
           </>
         )}
         <PlatesModal
-          modalName="Work Plates"
+          modalName="Work Sets"
           sets={lift.sets}
           shortName={lift.shortName}
           rootShortName={lift.rootShortName}
