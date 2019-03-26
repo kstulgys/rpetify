@@ -1,5 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css"
-import "shards-ui/dist/css/shards.min.css"
 import React, { useEffect, useState } from "react"
 import { FormSelect } from "shards-react"
 import { FaTrashAlt } from "react-icons/fa"

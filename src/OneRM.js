@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react"
-import { Button, Modal, ModalBody, ModalHeader, FormSelect } from "shards-react"
+import React, { useState } from "react"
+import { Button, Modal, ModalBody } from "shards-react"
 import LiftOneRMRow from "./LiftOneRMRow"
 import LiftModifierRow from "./LiftModifierRow"
 import store from "./store"
 
 export default function OneRM() {
   const { state, setState } = store.useStore()
-  const [open, toggle] = useState(false)
+  const [open, toggle] = useState(true)
   const doNotRenderLifts = ["SQ", "BP", "MP", "DL"]
 
   return (

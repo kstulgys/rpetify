@@ -9,7 +9,7 @@ const initialState = {
       shortName: "SQ",
       reps: 5,
       rpe: 8,
-      totalWeight: 0,
+      totalWeight: 200,
       oneRM: 0
     },
     {
@@ -18,7 +18,7 @@ const initialState = {
       shortName: "DL",
       reps: 5,
       rpe: 8,
-      totalWeight: 0,
+      totalWeight: 200,
       oneRM: 0
     },
     {
@@ -27,7 +27,7 @@ const initialState = {
       shortName: "BP",
       reps: 5,
       rpe: 8,
-      totalWeight: 0,
+      totalWeight: 200,
       oneRM: 0
     },
     {
@@ -36,7 +36,7 @@ const initialState = {
       shortName: "MP",
       reps: 5,
       rpe: 8,
-      totalWeight: 0,
+      totalWeight: 200,
       oneRM: 0
     }
   ],
@@ -161,7 +161,6 @@ const initialState = {
     {
       shortName: "SQ",
       rootShortName: "SQ",
-
       no: 0,
       sets: [
         { no: 0, reps: 6, rpe: 8, times: 2 },

@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react"
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalHeader,
-  FormSelect,
-  FormInput
-} from "shards-react"
+import { FormSelect } from "shards-react"
 import { getPlatesOnBar, percentageLookup, getRoundedLbs } from "./utils"
 import store from "./store"
 
@@ -21,20 +14,8 @@ export default function LiftOneRMRow({
   const { state, setState } = store.useStore()
   useEffect(
     () => {
-      if (!totalWeight) {
-        const percent = percentageLookup[rpe][reps]
-        const newOneRM = getRoundedLbs(
-          Math.round((100 * 100) / (percent * 100))
-        )
-        setState(state => {
-          state.liftsOneRM[id].oneRM = newOneRM
-        })
-        return
-      }
       const percent = percentageLookup[rpe][reps]
-      const newOneRM = getRoundedLbs(
-        Math.round((totalWeight * 100) / (percent * 100))
-      )
+      const newOneRM = Math.round((totalWeight * 100) / (percent * 100))
 
       setState(state => {
         state.liftsOneRM[id].oneRM = newOneRM

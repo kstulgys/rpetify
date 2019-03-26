@@ -21,13 +21,10 @@ export default function PlatesModal({
     ).oneRM
     return rootOneRM
   }
-  // console.log("getRootOneRM", getRootOneRM())
 
   const getModifier = () => {
     return state.modifiers.find(lift => lift.shortName === shortName).modifier
   }
-
-  // console.log("getModifier", getModifier())
 
   const getWorkWeight = (rpe, reps) => {
     const rpePercent = percentageLookup[rpe][reps]

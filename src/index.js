@@ -7,7 +7,6 @@ import { Button } from "shards-react"
 import OneRM from "./OneRM"
 import LiftContext from "./LiftContext"
 import AddLift from "./AddLift"
-import LiftModifiers from "./LiftModifiers"
 import store from "./store"
 
 function App() {
