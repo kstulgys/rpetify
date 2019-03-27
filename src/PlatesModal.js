@@ -28,9 +28,7 @@ export default function PlatesModal({
 
   const getWorkWeight = (rpe, reps) => {
     const rpePercent = percentageLookup[rpe][reps]
-
     let partialWeight = Math.round(getModifier() * getRootOneRM() * rpePercent)
-
     if (reps === 15) {
       partialWeight = Math.round(getModifier() * getRootOneRM())
       if (shortName === "DBfb-myo") {
@@ -42,12 +40,12 @@ export default function PlatesModal({
 
   const getWarmupWeight = percent => {
     const rpePercent = percentageLookup[workRpe][workReps]
-
     const partialWeight = Math.round(
       getModifier() * getRootOneRM() * rpePercent * percent
     )
     return getRoundedLbs(partialWeight)
   }
+
   const warmupArray = [
     { set: 1, reps: "3 x 5 (bar)", percent: 0 },
     { set: 2, reps: "1 x 8 @55", percent: 0.55 },
@@ -55,19 +53,6 @@ export default function PlatesModal({
     { set: 4, reps: "1 x 3 @80", percent: 0.8 },
     { set: 5, reps: "1 x 1 @90", percent: 0.9 }
   ]
-
-  // function WarmupRow(set, text, percent) {
-  //   return (
-  //     <>
-  //       <td>{set}</td>
-  //       <td>
-  //         {text} {percent}
-  //       </td>
-  //       <td>{getWarmupWeight(percent)}</td>
-  //       <td>{getPlatesOnBar(getWarmupWeight(percent))}</td>
-  //     </>
-  //   )
-  // }
 
   return (
     <>
@@ -80,72 +65,75 @@ export default function PlatesModal({
       </Button>
 
       <Modal className="" open={open} toggle={() => toggle(!open)}>
-        <ModalBody className="p-0">
-          {modalName === "Warm-Up Sets" ? (
-            <table className="table">
-              <thead className="thead-dark text-center">
-                <tr className="">
-                  <th className="" scope="col">
-                    Sets
-                  </th>
-                  <th className="" scope="col">
-                    Reps
-                  </th>
-                  <th className="" scope="col">
-                    Plates
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {warmupArray.map(({ set, reps, percent }) => {
-                  return (
-                    <tr key={set} className="text-center">
-                      <td>{set}</td>
-                      <td>
-                        {reps} => {getWarmupWeight(percent)}
-                      </td>
-                      <td className="text-left">
-                        {getPlatesOnBar(getWarmupWeight(percent))}
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          ) : (
-            <table className="table">
-              <thead className="thead-dark text-center">
-                <tr className="">
-                  <th className="" scope="col">
-                    Sets
-                  </th>
-                  <th className="" scope="col">
-                    Reps
-                  </th>
-                  <th className="" scope="col">
-                    Plates
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {sets.map(({ no, reps, rpe, times }) => {
-                  return (
-                    <tr key={no} className="text-center">
-                      <td>{no + 1}</td>
-                      <td>
-                        {reps} @{rpe} x {times} => {getWorkWeight(rpe, reps)}
-                      </td>
-                      <td className="text-left">
-                        {getPlatesOnBar(getWorkWeight(rpe, reps))}
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          )}
+        <ModalBody className="p-0 m-0">
+          <table className="table">
+            <thead className="thead-dark text-center">
+              <tr className="">
+                <th scope="col">Sets</th>
+                <th scope="col">Reps</th>
+                <th scope="col">Plates</th>
+              </tr>
+            </thead>
+            {modalName === "Warm-Up Sets" ? (
+              <WarmupSetsBody />
+            ) : (
+              <WorkSetsBody />
+            )}
+          </table>
         </ModalBody>
       </Modal>
     </>
   )
+
+  function WarmupSetsBody() {
+    return (
+      <tbody>
+        {warmupArray.map(({ set, reps, percent }) => {
+          return (
+            <tr key={set} className="text-center">
+              <td>
+                <h6 className="my-2">{set}</h6>
+              </td>
+              <td className="text-left d-flex">
+                <h6 className="my-2">{reps} =></h6>
+                <h6 className="ml-auto my-1">{getWarmupWeight(percent)}</h6>
+              </td>
+              <td className="text-left">
+                <h6 className="my-2 font-weight-bold">
+                  {getPlatesOnBar(getWarmupWeight(percent))}
+                </h6>
+              </td>
+            </tr>
+          )
+        })}
+      </tbody>
+    )
+  }
+
+  function WorkSetsBody() {
+    return (
+      <tbody>
+        {sets.map(({ no, reps, rpe, times }) => {
+          return (
+            <tr key={no} className="text-center">
+              <td>
+                <h6 className="my-2">{no + 1}</h6>
+              </td>
+              <td className="text-left d-flex">
+                <h6 className="my-2">
+                  {reps} @{rpe} x {times} =>
+                </h6>
+                <h6 className="ml-auto my-2">{getWorkWeight(rpe, reps)}</h6>
+              </td>
+              <td className="text-left">
+                <h6 className="font-weight-bold my-2">
+                  {getPlatesOnBar(getWorkWeight(rpe, reps))}
+                </h6>
+              </td>
+            </tr>
+          )
+        })}
+      </tbody>
+    )
+  }
 }
