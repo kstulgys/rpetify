@@ -96,11 +96,13 @@ export default function PlatesModal({
               </td>
               <td className="text-left d-flex">
                 <h6 className="my-2">{reps} =></h6>
-                <h6 className="ml-auto my-1">{getWarmupWeight(percent)}</h6>
+                <h6 className="ml-auto my-2">
+                  {percent ? getWarmupWeight(percent) : 0}
+                </h6>
               </td>
               <td className="text-left">
                 <h6 className="my-2 font-weight-bold">
-                  {getPlatesOnBar(getWarmupWeight(percent))}
+                  {percent ? getPlatesOnBar(getWarmupWeight(percent)) : "-"}
                 </h6>
               </td>
             </tr>
