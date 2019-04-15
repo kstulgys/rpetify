@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
-import { FormSelect } from "shards-react"
-import { FaTrashAlt } from "react-icons/fa"
-import store from "./store"
+import React, { useEffect, useState } from 'react'
+import { FormSelect } from 'shards-react'
+import { FaTrashAlt } from 'react-icons/fa'
+import store from './store'
 
 export default function LiftRow({ liftNo, shortName, set }) {
   const { state, setState } = store.useStore()
@@ -13,7 +13,8 @@ export default function LiftRow({ liftNo, shortName, set }) {
           size="lg"
           className="w-100"
           value={set.reps}
-          onChange={e => onRepsChange(Number(e.target.value))}>
+          onChange={e => onRepsChange(Number(e.target.value))}
+        >
           {reps().map(rep => {
             return (
               <option key={rep} value={rep}>
@@ -24,12 +25,13 @@ export default function LiftRow({ liftNo, shortName, set }) {
         </FormSelect>
       </div>
       <div className="col-3 px-0">
-        {!shortName.includes("myo") ? (
+        {!shortName.includes('myo') ? (
           <FormSelect
             size="lg"
             className="w-100"
             value={set.rpe}
-            onChange={e => onRpeChange(Number(e.target.value))}>
+            onChange={e => onRpeChange(Number(e.target.value))}
+          >
             {rpes().map(rpe => {
               return (
                 <option key={rpe} value={rpe}>
@@ -43,12 +45,13 @@ export default function LiftRow({ liftNo, shortName, set }) {
         )}
       </div>
       <div className="col-3 px-0">
-        {!shortName.includes("myo") ? (
+        {!shortName.includes('myo') ? (
           <FormSelect
             className="w-100"
             value={set.times}
             size="lg"
-            onChange={e => onTimesChange(Number(e.target.value))}>
+            onChange={e => onTimesChange(Number(e.target.value))}
+          >
             >
             {times().map(time => {
               return (
@@ -65,8 +68,9 @@ export default function LiftRow({ liftNo, shortName, set }) {
       <div className="col-1 d-flex justify-content-center">
         <h5
           className={
-            set.no === 0 ? "text-danger  p-0 m-0" : "text-warning  p-0 m-0"
-          }>
+            set.no === 0 ? 'text-danger  p-0 m-0' : 'text-warning  p-0 m-0'
+          }
+        >
           <FaTrashAlt onClick={() => onSetRemove(set.no)} />
         </h5>
       </div>
@@ -93,7 +97,7 @@ export default function LiftRow({ liftNo, shortName, set }) {
   function onSetRemove(setNumber) {
     if (setNumber === 0) {
       let liftNumber = 0
-      const r = window.confirm("Do you really want to remove this Lift?")
+      const r = window.confirm('Do you really want to remove this Lift?')
       if (r === true) {
         setState(state => {
           state.currentLifts = state.currentLifts.filter(
@@ -129,7 +133,7 @@ export default function LiftRow({ liftNo, shortName, set }) {
 }
 
 function reps() {
-  return [6, 7, 8, 15]
+  return [1, 2, 3, 4, 5, 6, 7, 8, 15]
 }
 function rpes() {
   return [6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10]
