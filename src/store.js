@@ -1,5 +1,5 @@
-import React, { useMemo, useContext, createContext, useState } from "react"
-import { useImmer } from "use-immer"
+import React, { useMemo, useContext, createContext, useState } from "react";
+import { useImmer } from "use-immer";
 
 const initialState = {
   liftsOneRM: [
@@ -58,6 +58,27 @@ const initialState = {
       modifier: 1
     },
     {
+      id: 2.1,
+      name: "Squat-2sc",
+      rootShortName: "SQ",
+      shortName: "SQ2s",
+      modifier: 1
+    },
+    {
+      id: 2.2,
+      name: "Squat-303",
+      rootShortName: "SQ",
+      shortName: "SQ303",
+      modifier: 1
+    },
+    {
+      id: 2.3,
+      name: "Squat-pin",
+      rootShortName: "SQ",
+      shortName: "SQpin",
+      modifier: 1
+    },
+    {
       id: 3,
       name: "B-Press",
       rootShortName: "BP",
@@ -69,6 +90,13 @@ const initialState = {
       name: "B-Press-1sc",
       rootShortName: "BP",
       shortName: "BP1s",
+      modifier: 0.9
+    },
+    {
+      id: 4.1,
+      name: "B-Press-3sc",
+      rootShortName: "BP",
+      shortName: "BP3s",
       modifier: 0.9
     },
     {
@@ -97,6 +125,13 @@ const initialState = {
       name: "Romanian-Deadlift",
       rootShortName: "DL",
       shortName: "RDL",
+      modifier: 0.8
+    },
+    {
+      id: 8.1,
+      name: "DL-mid-shin",
+      rootShortName: "DL",
+      shortName: "DL-ms",
       modifier: 0.8
     },
     {
@@ -185,51 +220,51 @@ const initialState = {
       sets: [{ no: 0, reps: 15, rpe: 8, times: 1 }]
     }
   ]
-}
+};
 
 const getLocalStorageState = () =>
-  JSON.parse(localStorage.getItem("state")) || initialState
+  JSON.parse(localStorage.getItem("state")) || initialState;
 
 const setStateToLocalStorage = state =>
-  localStorage.setItem("state", JSON.stringify(state))
+  localStorage.setItem("state", JSON.stringify(state));
 
 const clearLocalStorage = () => {
-  const localStorageState = getLocalStorageState()
-  let newState = localStorageState
+  const localStorageState = getLocalStorageState();
+  let newState = localStorageState;
   Object.keys(initialState).map(key => {
     if (!localStorageState.hasOwnProperty(key)) {
       // console.log(key)
       // console.log(initialState[key])
-      newState[key] = initialState[key]
-      setStateToLocalStorage(newState)
+      newState[key] = initialState[key];
+      setStateToLocalStorage(newState);
       // window.localStorage.clear()
     }
-    return null
-  })
-}
+    return null;
+  });
+};
 
 function makeStore() {
-  clearLocalStorage()
-  const Context = createContext()
+  clearLocalStorage();
+  const Context = createContext();
 
-  const useStore = () => useContext(Context)
+  const useStore = () => useContext(Context);
 
   const Provider = ({ children }) => {
-    const [state, setState] = useImmer(getLocalStorageState)
+    const [state, setState] = useImmer(getLocalStorageState);
 
-    useMemo(() => setStateToLocalStorage(state), [state])
+    useMemo(() => setStateToLocalStorage(state), [state]);
     const contextValue = {
       state,
       setState
-    }
+    };
 
-    return <Context.Provider value={contextValue}>{children}</Context.Provider>
-  }
+    return <Context.Provider value={contextValue}>{children}</Context.Provider>;
+  };
 
   return {
     Provider,
     useStore
-  }
+  };
 }
 
-export default makeStore()
+export default makeStore();
