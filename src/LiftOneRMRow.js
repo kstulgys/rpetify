@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
-import { FormSelect } from "shards-react"
-import { getPlatesOnBar, percentageLookup, getRoundedLbs } from "./utils"
-import store from "./store"
+import React, { useState, useEffect } from "react";
+import { FormSelect } from "shards-react";
+import { getPlatesOnBar, percentageLookup, getRoundedLbs } from "./utils";
+import store from "./store";
 
 export default function LiftOneRMRow({
   id,
@@ -11,36 +11,35 @@ export default function LiftOneRMRow({
   totalWeight,
   oneRM
 }) {
-  const { state, setState } = store.useStore()
-  useEffect(
-    () => {
-      const percent = percentageLookup[rpe][reps]
-      const newOneRM = Math.round((totalWeight * 100) / (percent * 100))
+  const { state, setState } = store.useStore();
 
-      setState(state => {
-        state.liftsOneRM[id].oneRM = newOneRM
-      })
-    },
-    [id, name, reps, rpe, totalWeight]
-  )
+  useEffect(() => {
+    const percent = percentageLookup[rpe][reps];
+    // const newOneRM = Math.round((totalWeight * 100) / (percent * 100));
+    const newOneRM = Math.round(totalWeight * (1 + (1 - percent)));
+
+    setState(state => {
+      state.liftsOneRM[id].oneRM = newOneRM;
+    });
+  }, [id, name, reps, rpe, totalWeight]);
 
   const handleRepsChange = reps => {
     setState(state => {
-      state.liftsOneRM[id].reps = reps
-    })
-  }
+      state.liftsOneRM[id].reps = reps;
+    });
+  };
 
   const handleRpeChange = rpe => {
     setState(state => {
-      state.liftsOneRM[id].rpe = rpe
-    })
-  }
+      state.liftsOneRM[id].rpe = rpe;
+    });
+  };
 
   const handleWeightChange = value => {
     setState(state => {
-      state.liftsOneRM[id].totalWeight = Number(value)
-    })
-  }
+      state.liftsOneRM[id].totalWeight = Number(value);
+    });
+  };
 
   return (
     <>
@@ -52,13 +51,14 @@ export default function LiftOneRMRow({
           // className="mx-1"
           style={{ width: 65 }}
           value={totalWeight}
-          onChange={e => handleWeightChange(Number(e.target.value))}>
+          onChange={e => handleWeightChange(Number(e.target.value))}
+        >
           {getPossibleValues().map(val => {
             return (
               <option key={val} value={val}>
                 {val}
               </option>
-            )
+            );
           })}
         </FormSelect>
       </td>
@@ -67,13 +67,14 @@ export default function LiftOneRMRow({
           style={{ width: 60 }}
           className="mx-1"
           value={reps}
-          onChange={e => handleRepsChange(Number(e.target.value))}>
+          onChange={e => handleRepsChange(Number(e.target.value))}
+        >
           {repsOptions().map(rep => {
             return (
               <option key={rep} value={rep}>
                 {rep}
               </option>
-            )
+            );
           })}
         </FormSelect>
       </td>
@@ -82,13 +83,14 @@ export default function LiftOneRMRow({
           // className="mx-1"
           style={{ width: 60 }}
           value={rpe}
-          onChange={e => handleRpeChange(Number(e.target.value))}>
+          onChange={e => handleRpeChange(Number(e.target.value))}
+        >
           {rpesOptions().map(rpe => {
             return (
               <option key={rpe} value={rpe}>
                 {rpe}
               </option>
-            )
+            );
           })}
         </FormSelect>
       </td>
@@ -97,14 +99,14 @@ export default function LiftOneRMRow({
         {oneRM}
       </td>
     </>
-  )
+  );
 }
 function repsOptions() {
-  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 }
 
 function rpesOptions() {
-  return [6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10]
+  return [6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10];
 }
 
 function getPossibleValues() {
@@ -112,11 +114,11 @@ function getPossibleValues() {
     .fill(null)
     .map((_, i) => {
       if (i >= 100 && i % 5 === 0) {
-        return i
+        return i;
       }
-      return null
+      return null;
     })
-    .filter(item => item)
+    .filter(item => item);
 }
 
 // function setNewRM(val) {
