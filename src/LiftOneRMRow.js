@@ -15,8 +15,8 @@ export default function LiftOneRMRow({
 
   useEffect(() => {
     const percent = percentageLookup[rpe][reps];
-    const newOneRM = Math.round((totalWeight * 100) / (percent * 100));
-    // const newOneRM = Math.round(totalWeight * (1 + (1 - percent)));
+    // const newOneRM = Math.round((totalWeight * 100) / (percent * 100));
+    const newOneRM = Math.round(totalWeight / percent);
 
     setState(state => {
       state.liftsOneRM[id].oneRM = newOneRM;
