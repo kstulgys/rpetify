@@ -29,7 +29,8 @@ function App() {
   return (
     <div
       className=" m-0 p-0 row d-flex justify-content-center w-100"
-      style={{ height: "100%", overflowX: "hidden" }}>
+      style={{ height: "100%", overflowX: "hidden" }}
+    >
       <div className="col-12 col-sm-6">
         {state.currentLifts.map((lift, i) => {
           return <LiftContext lift={lift} key={i} />
@@ -55,7 +56,8 @@ function App() {
                 localStorage.clear()
                 window.location.reload()
               }
-            }}>
+            }}
+          >
             Application Reset
           </Button>
         </div>
@@ -73,12 +75,13 @@ function ProgramModal() {
         size="lg"
         theme="info"
         className="w-100"
-        onClick={() => toggle(!open)}>
+        onClick={() => toggle(!open)}
+      >
         Program
       </Button>
       <Modal className="" open={open} toggle={() => toggle(!open)}>
         <ModalBody className="p-0">
-          <img src={image} style={{ width: "100%" }} />
+          <img src={image} style={{ width: "100%" }} alt="img" />
         </ModalBody>
       </Modal>
     </div>
