@@ -56,9 +56,9 @@ export default function PlatesModal({
 
   const warmupArray = [
     { set: 1, reps: "3 x 5 (bar)", percent: 0 },
-    { set: 2, reps: "1 x 5 @45", percent: 0.45 },
-    { set: 3, reps: "1 x 3 @65", percent: 0.65 },
-    { set: 4, reps: "1 x 2 @85", percent: 0.85 }
+    { set: 2, reps: "1 x 5 @45%", percent: 0.45 },
+    { set: 3, reps: "1 x 3 @65%", percent: 0.65 },
+    { set: 4, reps: "1 x 2 @85%", percent: 0.85 }
   ]
 
   return (
